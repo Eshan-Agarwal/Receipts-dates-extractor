@@ -124,6 +124,7 @@ def extract_dates(path):
         process_text = re.sub('\d{3,}/\d{1,} ', ' #',process_text)
         process_text = re.sub(' \d{2}/\d{1}', '',process_text)
         process_text = re.sub('-\d{1} ', ' #',process_text)
+        process_text = re.sub('\d{1,} \d{1,} \d{1,} \d{1,} \d{1,}',' #',process_text)
         process_text = re.sub('.00',' #',process_text)
         process_text = re.sub(' #', ' ',process_text)
         process_text = re.sub('today', '',process_text)
@@ -179,8 +180,13 @@ def extract_dates(path):
         if (len(df.date_time) == 2):
                     if not df.empty:
                         if not df.date_time[0].isdigit(): 
-                            if not df.date_time[1].isdigit(): 
-                                a = df.date_time[0] + " " + (df.date_time[1])
+                            if not df.date_time[1].isdigit():
+                                if not (df.date_time[0] == df.date_time[1]):
+                                    
+                                    a = df.date_time[0] + " " + (df.date_time[1])
+                                    
+                                if (df.date_time[0] == df.date_time[1]):
+                                    a = df.date_time[0]
                              
 
         if (len(df.date_time) == 2):
@@ -224,7 +230,20 @@ def extract_dates(path):
                         if not df.date_time[0].isdigit() : 
                             if not df.date_time[1].isdigit() :
                                 if not df.date_time[2].isdigit() :
-                                    a = df.date_time[0] + " " + (df.date_time[1]) + " " + (df.date_time[2])
+                                    if not (df.date_time[0] == df.date_time[1] == df.date_time[2]):
+                                        a = df.date_time[0] + " " + (df.date_time[1]) + " " + (df.date_time[2])
+                                    
+                                    if (df.date_time[0] == df.date_time[1] != df.date_time[2]): 
+                                        a = df.date_time[0] + " " + (df.date_time[2])
+                                        
+                                    if (df.date_time[0] == df.date_time[2] != df.date_time[1]): 
+                                        a = df.date_time[0] + " " + (df.date_time[1])
+                                        
+                                    if (df.date_time[1] == df.date_time[2] != df.date_time[0]): 
+                                        a = df.date_time[0] + " " + (df.date_time[1])
+                                    
+                                    if (df.date_time[0] == df.date_time[1] == df.date_time[2]):
+                                        a = df.date_time[0]
                                     
 
 
@@ -261,7 +280,11 @@ def extract_dates(path):
                             if df.date_time[0].isdigit():
                                 if not df.date_time[1].isdigit():
                                     if not df.date_time[2].isdigit():
-                                        a = df.date_time[1] + " " + (df.date_time[2])
+                                        if not (df.date_time[1] == df.date_time[2]):
+                                            a = df.date_time[1] + " " + (df.date_time[2])
+                                            
+                                        if (df.date_time[1] == df.date_time[2]):
+                                            a = df.date_time[1]
                                    
 
 
@@ -270,7 +293,11 @@ def extract_dates(path):
                             if df.date_time[1].isdigit():
                                 if not df.date_time[0].isdigit():
                                     if not df.date_time[2].isdigit():
-                                        a = df.date_time[0] + " " + (df.date_time[2])
+                                        if not (df.date_time[0] == df.date_time[2]):
+                                            a = df.date_time[0] + " " + (df.date_time[2])
+                                            
+                                        if (df.date_time[0] == df.date_time[2]):
+                                            a = df.date_time[0]
                                     
 
 
@@ -280,8 +307,12 @@ def extract_dates(path):
                             if df.date_time[2].isdigit():
                                 if not df.date_time[0].isdigit():
                                     if not df.date_time[1].isdigit():
-                                        a = df.date_time[0] + " " + (df.date_time[1])
-                                    
+                                        if not (df.date_time[0] == df.date_time[1]):
+                                            a = df.date_time[0] + " " + (df.date_time[1])
+                                            
+                                        if (df.date_time[0] == df.date_time[1]):
+                                             a = df.date_time[0]
+                                                
 
 
         if (len(df.date_time) == 4):
@@ -299,7 +330,60 @@ def extract_dates(path):
                          if not df.date_time[1].isdigit():
                             if not df.date_time[2].isdigit():
                                 if not df.date_time[3].isdigit():
-                                    a = df.date_time[0] + " " + (df.date_time[1]) + " " + (df.date_time[2]) + " " + (df.date_time[3])
+                                    if not (df.date_time[0] == df.date_time[1] == df.date_time[2]== df.date_time[3]):
+                                            a = df.date_time[0] + " " + (df.date_time[1]) + " " + (df.date_time[2]) + " " + (df.date_time[3])
+                                            
+                                    if (df.date_time[0] == df.date_time[1] == df.date_time[2]== df.date_time[3]):
+                                            a = df.date_time[0]
+                                    
+                                    if (df.date_time[0] == df.date_time[1] == df.date_time[2]!= df.date_time[3]):
+                                            a = df.date_time[0] + " " + (df.date_time[3])
+                                            
+                                    if (df.date_time[0] == df.date_time[1] == df.date_time[3]!= df.date_time[2]):
+                                            a = df.date_time[0] + " " + (df.date_time[2])
+                                            
+                                    if (df.date_time[1] == df.date_time[2] == df.date_time[3]!= df.date_time[0]):
+                                            a = df.date_time[0] + " " + (df.date_time[1])
+                                            
+                                    if (df.date_time[0] == df.date_time[2] == df.date_time[3]!= df.date_time[1]):
+                                            a = df.date_time[0] + " " + (df.date_time[1])
+                                            
+                                            
+                                    if (df.date_time[0] == df.date_time[1] != df.date_time[2]== df.date_time[3]):
+                                            a = df.date_time[0] + " " + (df.date_time[2])
+                                            
+                                    if (df.date_time[0] == df.date_time[2] != df.date_time[1]== df.date_time[3]):
+                                            a = df.date_time[0] + " " + (df.date_time[1])
+                                            
+                                    if (df.date_time[0] == df.date_time[3] != df.date_time[1]== df.date_time[2]):
+                                            a = df.date_time[0] + " " + (df.date_time[2])
+                                            
+                                    if (df.date_time[1] == df.date_time[2] != df.date_time[0]== df.date_time[3]):
+                                            a = df.date_time[0] + " " + (df.date_time[1])
+                                            
+                                    if (df.date_time[2] == df.date_time[3] != df.date_time[1]== df.date_time[0]):
+                                            a = df.date_time[0] + " " + (df.date_time[2])
+                                            
+                                            
+                                    
+                                    if (df.date_time[0] == df.date_time[1] != df.date_time[2]!= df.date_time[3]):
+                                            a = df.date_time[0] + " " + (df.date_time[2]) + " " + (df.date_time[3])
+                                            
+                                    if (df.date_time[0] == df.date_time[2] != df.date_time[1]!= df.date_time[3]):
+                                            a = df.date_time[0] + " " + (df.date_time[1])+ " " + (df.date_time[3])
+                                            
+                                    if (df.date_time[0] == df.date_time[3] != df.date_time[1]!= df.date_time[2]):
+                                            a = df.date_time[0] + " " + (df.date_time[1])+ " " + (df.date_time[2])
+                                            
+                                    if (df.date_time[1] == df.date_time[2] != df.date_time[0]!= df.date_time[3]):
+                                            a = df.date_time[0] + " " + (df.date_time[1])+ " " + (df.date_time[3])
+                                            
+                                    if (df.date_time[2] == df.date_time[3] != df.date_time[1]!= df.date_time[0]):
+                                            a = df.date_time[0] + " " + (df.date_time[1])+ " " + (df.date_time[2])        
+                                            
+                                    
+                                            
+                                    
 
         if (len(df.date_time) == 4):
                 if not df.empty:
@@ -307,7 +391,22 @@ def extract_dates(path):
                          if not df.date_time[1].isdigit():
                             if not df.date_time[2].isdigit():
                                 if not df.date_time[3].isdigit():
-                                    a = (df.date_time[1]) + " " + (df.date_time[2]) + " " + (df.date_time[3])
+                                    
+                                        if not (df.date_time[1] == df.date_time[2] == df.date_time[3]):
+                                            a = (df.date_time[1]) + " " + (df.date_time[2]) + " " + (df.date_time[3])
+
+                                        if (df.date_time[1] == df.date_time[2] != df.date_time[3]): 
+                                            a = df.date_time[1] + " " + (df.date_time[3])
+
+                                        if (df.date_time[1] == df.date_time[3] != df.date_time[2]): 
+                                            a = df.date_time[1] + " " + (df.date_time[2])
+
+                                        if (df.date_time[2] == df.date_time[3] != df.date_time[1]): 
+                                            a = df.date_time[1] + " " + (df.date_time[2])
+
+                                
+                                                                         
+                                    
                                     
                                     
         if (len(df.date_time) == 4):
@@ -316,7 +415,19 @@ def extract_dates(path):
                                  if not df.date_time[0].isdigit():
                                     if not df.date_time[2].isdigit():
                                         if not df.date_time[3].isdigit():
-                                            a = (df.date_time[0]) + " " + (df.date_time[2]) + " " + (df.date_time[3])
+                                                                         
+                                            if not (df.date_time[0] == df.date_time[2] == df.date_time[3]):
+                                                a = (df.date_time[0]) + " " + (df.date_time[2]) + " " + (df.date_time[3])
+
+                                            if (df.date_time[0] == df.date_time[2] != df.date_time[3]): 
+                                                a = df.date_time[0] + " " + (df.date_time[3])
+
+                                            if (df.date_time[0] == df.date_time[3] != df.date_time[2]): 
+                                                a = df.date_time[0] + " " + (df.date_time[2])
+
+                                            if (df.date_time[2] == df.date_time[3] != df.date_time[0]): 
+                                                a = df.date_time[0] + " " + (df.date_time[2])
+                                                    
 
                                             
         if (len(df.date_time) == 4):
@@ -325,7 +436,20 @@ def extract_dates(path):
                                  if not df.date_time[0].isdigit():
                                     if not df.date_time[1].isdigit():
                                         if not df.date_time[3].isdigit():
-                                            a = (df.date_time[0]) + " " + (df.date_time[1]) + " " + (df.date_time[3])
+                                                                         
+                                                                         
+                                            if not (df.date_time[0] == df.date_time[1] == df.date_time[3]):
+                                                a = (df.date_time[0]) + " " + (df.date_time[1]) + " " + (df.date_time[3])
+
+                                            if (df.date_time[0] == df.date_time[1] != df.date_time[3]): 
+                                                a = df.date_time[0] + " " + (df.date_time[3])
+
+                                            if (df.date_time[0] == df.date_time[3] != df.date_time[1]): 
+                                                a = df.date_time[0] + " " + (df.date_time[1])
+
+                                            if (df.date_time[1] == df.date_time[3] != df.date_time[0]): 
+                                                a = df.date_time[0] + " " + (df.date_time[1])
+                                            
                                             
                                             
         if (len(df.date_time) == 4):
@@ -334,7 +458,19 @@ def extract_dates(path):
                                  if not df.date_time[0].isdigit():
                                     if not df.date_time[1].isdigit():
                                         if not df.date_time[2].isdigit():
-                                            a = (df.date_time[0]) + " " + (df.date_time[1]) + " " + (df.date_time[2])
+                                                                    
+                                            if not (df.date_time[0] == df.date_time[1] == df.date_time[2]):
+                                                a = (df.date_time[0]) + " " + (df.date_time[1]) + " " + (df.date_time[2])
+
+                                            if (df.date_time[0] == df.date_time[1] != df.date_time[2]): 
+                                                a = df.date_time[0] + " " + (df.date_time[2])
+
+                                            if (df.date_time[0] == df.date_time[2] != df.date_time[1]): 
+                                                a = df.date_time[0] + " " + (df.date_time[1])
+
+                                            if (df.date_time[1] == df.date_time[2] != df.date_time[0]): 
+                                                a = df.date_time[0] + " " + (df.date_time[1])
+                                            
 
         if (len(df.date_time) == 4):
                         if not df.empty:
@@ -342,7 +478,13 @@ def extract_dates(path):
                                 if df.date_time[1].isdigit():
                                     if not df.date_time[2].isdigit():
                                         if not df.date_time[3].isdigit():
-                                                a = df.date_time[2] + " " + (df.date_time[3])
+                                                                         
+                                                if not (df.date_time[2] == df.date_time[3]):
+                                                    a = df.date_time[2] + " " + (df.date_time[3])
+                                                                         
+                                                if (df.date_time[2] == df.date_time[3]):
+                                                                         
+                                                    a = df.date_time[2]
                                             
 
         if (len(df.date_time) == 4):
@@ -351,7 +493,14 @@ def extract_dates(path):
                                 if df.date_time[2].isdigit():
                                     if not df.date_time[1].isdigit():
                                         if not df.date_time[3].isdigit():
-                                            a = df.date_time[1] + " " + (df.date_time[3])
+                                                                         
+                                            if not (df.date_time[1] == df.date_time[3]):
+                                                    a = df.date_time[1] + " " + (df.date_time[3])
+                                                                         
+                                            if (df.date_time[1] == df.date_time[3]):
+                                                                         
+                                                    a = df.date_time[1]
+                                            
                                           
 
         if (len(df.date_time) == 4):
@@ -360,7 +509,14 @@ def extract_dates(path):
                                 if df.date_time[3].isdigit():
                                     if not df.date_time[1].isdigit():
                                         if not df.date_time[2].isdigit():
-                                            a = df.date_time[1] + " " + (df.date_time[2])
+                                                                         
+                                            if not (df.date_time[1] == df.date_time[2]):
+                                                    a = df.date_time[1] + " " + (df.date_time[2])
+                                                                         
+                                            if (df.date_time[1] == df.date_time[2]):
+                                                                         
+                                                    a = df.date_time[2]
+                                            
                                          
 
         if (len(df.date_time) == 4):
@@ -369,7 +525,14 @@ def extract_dates(path):
                                 if df.date_time[2].isdigit():
                                     if not df.date_time[0].isdigit():
                                         if not df.date_time[3].isdigit():
-                                            a = df.date_time[0] + " " + (df.date_time[3])
+                                                                         
+                                            if not (df.date_time[0] == df.date_time[3]):
+                                                    a = df.date_time[0] + " " + (df.date_time[3])
+                                                                         
+                                            if (df.date_time[0] == df.date_time[3]):
+                                                                         
+                                                    a = df.date_time[0]
+                                            
                                          
 
         if (len(df.date_time) == 4):
@@ -378,7 +541,14 @@ def extract_dates(path):
                                 if df.date_time[3].isdigit():
                                     if not df.date_time[0].isdigit():
                                         if not df.date_time[2].isdigit():
-                                            a = df.date_time[0] + " " + (df.date_time[2])
+                                                                         
+                                            if not (df.date_time[0] == df.date_time[2]):
+                                                     a = df.date_time[0] + " " + (df.date_time[2])
+                                                                         
+                                            if (df.date_time[0] == df.date_time[2]):
+                                                                         
+                                                    a = df.date_time[0]
+                                           
                                         
 
         if (len(df.date_time) == 4):
@@ -387,7 +557,14 @@ def extract_dates(path):
                                 if df.date_time[3].isdigit():
                                     if not df.date_time[0].isdigit():
                                         if not df.date_time[1].isdigit():
-                                            a = df.date_time[0] + " " + (df.date_time[1])
+                                                                         
+                                            if not (df.date_time[0] == df.date_time[1]):
+                                                     a = df.date_time[0] + " " + (df.date_time[1])
+                                                                         
+                                            if (df.date_time[0] == df.date_time[1]):
+                                                                         
+                                                    a = df.date_time[0]
+                                            
                                         
 
 
@@ -429,7 +606,16 @@ def extract_dates(path):
                                     if df.date_time[3].isdigit():
                                         if not df.date_time[1].isdigit():
                                             a = df.date_time[1] 
-                                        
+                                                                         
+                                                                         
+        
+        if (len(df.date_time) >= 4):
+                        if not df.empty:
+                    
+                            if not df.date_time[0].isdigit():
+                                    
+                                  a = df.date_time[0]                                       
+                                                                         
 
 
 

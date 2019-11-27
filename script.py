@@ -11,8 +11,7 @@ from remove import remove
 
 
 
-if os.path.exists("runtime.txt"):
-		remove()
+
 
 #creating instance of the class
 app=Flask(__name__)
