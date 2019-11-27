@@ -11,7 +11,7 @@ from remove import remove
 
 
 
-if os.path.isdir("runtime.txt"):
+if os.path.exists("runtime.txt"):
 		remove()
 
 #creating instance of the class
