@@ -7,7 +7,7 @@ from flask import Flask, render_template, request,redirect
 from preprocess import process_image_for_ocr
 import pandas as pd
 import shutil
-from remove import remove
+
 
 
 
