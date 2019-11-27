@@ -12,7 +12,7 @@ import re
 import io
 
 
-
+a = 0
 def extract_dates(path):     
 
 
