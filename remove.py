@@ -1,2 +1,4 @@
 import os 
-os.remove("runtime.txt")
+
+def remove():
+	os.remove("runtime.txt")

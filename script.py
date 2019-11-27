@@ -7,9 +7,12 @@ from flask import Flask, render_template, request,redirect
 from preprocess import process_image_for_ocr
 import pandas as pd
 import shutil
+from remove import remove
 
 
 
+if os.path.isdir("runtime.txt"):
+		remove()
 
 #creating instance of the class
 app=Flask(__name__)
