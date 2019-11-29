@@ -83,6 +83,19 @@ def extract_dates(path):
         process_text = re.sub(' Nov ', 'Nov\'',process_text)
         process_text = re.sub(' Dec ', 'Dec\'',process_text)
 
+        process_text = re.sub('January ', 'Jan',process_text)
+        process_text = re.sub('February ', 'Feb',process_text)
+        process_text = re.sub('March ', 'Mar',process_text)
+        process_text = re.sub('April ', 'Apr',process_text)
+        process_text = re.sub('May ', 'May',process_text)
+        process_text = re.sub('June ', 'Jun',process_text)
+        process_text = re.sub('July ', 'Jul',process_text)
+        process_text = re.sub('August ', 'Aug',process_text)
+        process_text = re.sub('September ', 'Sep',process_text)
+        process_text = re.sub('October ', 'Oct',process_text)
+        process_text = re.sub('November ', 'Nov',process_text)
+        process_text = re.sub('December ', 'Dec',process_text)
+
         process_text = re.sub('Jan ', 'Jan',process_text)
         process_text = re.sub('Feb ', 'Feb',process_text)
         process_text = re.sub('Mar ', 'Mar',process_text)
@@ -110,7 +123,7 @@ def extract_dates(path):
         process_text = re.sub(' NOV', 'Nov',process_text)
         process_text = re.sub(' DEC', 'Dec',process_text)
 
-        process_text = re.sub( '\d{6,} ', '  #',process_text)
+        process_text = re.sub( '\d{5,} ', '  #',process_text)
         process_text = re.sub('\d{5,} ', ' ',process_text)
         process_text = re.sub('\d{5,}', '',process_text)
         #process_text = re.sub('\d{3} ', '  -',process_text)
@@ -120,6 +133,7 @@ def extract_dates(path):
         process_text = re.sub(' - ', '',process_text)
         process_text = re.sub(' PM', 'PM',process_text)
         process_text = re.sub('[a-z] ', '  #',process_text)
+        process_text = re.sub('[Aa-zZ]\d{1,} ',' #',process_text)
         process_text = re.sub(':\d{2,} ', '  #',process_text)
         process_text = re.sub('\d{3,}/\d{1,} ', ' #',process_text)
         process_text = re.sub(' \d{2}/\d{1}', '',process_text)
@@ -128,7 +142,7 @@ def extract_dates(path):
         process_text = re.sub('.00',' #',process_text)
         process_text = re.sub(' #', ' ',process_text)
         process_text = re.sub('today', '',process_text)
-        process_text = re.sub(',', '',process_text)
+        process_text = re.sub(',', '\'',process_text)
         process_text = re.sub('\'[A-Z]',' #',process_text)
 
 
@@ -230,7 +244,7 @@ def extract_dates(path):
                         if not df.date_time[0].isdigit() : 
                             if not df.date_time[1].isdigit() :
                                 if not df.date_time[2].isdigit() :
-                                    if not (df.date_time[0] == df.date_time[1] == df.date_time[2]):
+                                    if (df.date_time[0] != df.date_time[1] != df.date_time[2]):
                                         a = df.date_time[0] + " " + (df.date_time[1]) + " " + (df.date_time[2])
                                     
                                     if (df.date_time[0] == df.date_time[1] != df.date_time[2]): 
@@ -330,9 +344,7 @@ def extract_dates(path):
                          if not df.date_time[1].isdigit():
                             if not df.date_time[2].isdigit():
                                 if not df.date_time[3].isdigit():
-                                    if not (df.date_time[0] == df.date_time[1] == df.date_time[2]== df.date_time[3]):
-                                            a = df.date_time[0] + " " + (df.date_time[1]) + " " + (df.date_time[2]) + " " + (df.date_time[3])
-                                            
+                                    
                                     if (df.date_time[0] == df.date_time[1] == df.date_time[2]== df.date_time[3]):
                                             a = df.date_time[0]
                                     
@@ -609,7 +621,7 @@ def extract_dates(path):
                                                                          
                                                                          
         
-        if (len(df.date_time) >= 4):
+        if (len(df.date_time) > 4):
                         if not df.empty:
                     
                             if not df.date_time[0].isdigit():

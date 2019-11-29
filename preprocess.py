@@ -37,6 +37,7 @@ def set_image_dpi(file_path):
 
     ImageFile.LOAD_TRUNCATED_IMAGES = True
     im = Image.open(file_path)
+    im = im.convert('RGB')
     length_x, width_y = im.size
     factor = max(1, int(IMAGE_SIZE / length_x))
     size = factor * length_x, factor * width_y
