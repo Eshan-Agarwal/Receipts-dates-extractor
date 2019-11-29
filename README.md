@@ -9,3 +9,5 @@
 * Finally build a RESTful API using flask - See script.py file for more API details.
 
 ## API Link : https://receipts-info.herokuapp.com/
+
+* This API takes single or multiple images of receipts, bills, tax-invoice as input and return a pandas DataFrame contain dates of input images.
