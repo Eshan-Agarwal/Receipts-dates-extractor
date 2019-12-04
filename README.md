@@ -11,3 +11,4 @@
 ## API Link : https://receipts-info.herokuapp.com/
 
 * This API takes single or multiple images of receipts, bills, tax-invoice as input and return a pandas DataFrame contain dates of input images.
+* You can give maximum of 100 images at a time.
